@@ -1,0 +1,34 @@
+	• Create angular app
+	• Create Dockerfile in root  without extension
+	• Add below
+	FROM node:10.16.0-alpine as build-step
+	WORKDIR /app
+	COPY package.json ./
+	RUN npm install
+	COPY . .
+	RUN npm run build --prod
+	FROM nginx:1.17.1-alpine as prod-stage
+	COPY --from=build-step /app/dist/ang-docker-app /usr/share/nginx/html
+	EXPOSE 80
+	CMD ["nginx","-g","daemon off;"]
+	
+	• Build docker fileCMD->
+		? 'Docker build -t ang-docker-app .'
+		? Once successful , check avilable docker images
+			§ 'Docker image ls'
+		? To remove docker image
+			§ 'Docker image rm imageID'
+	• Run docker image,
+		? 'Docker run  -it -p 9000:80 --name ang-docker-app imageName'
+		? Goto localhost://9000 -> to see the app running
+	• Check image details
+		? 'Docker ps -a'
+	• Go Inside docker image
+		? 'Docker exec -I -t ang-docker-app sh'
+		? Then give the path for html (Egs)
+			§ 'Cd /usr/share/nginx/html'
+	• Start/stop docker image
+		? Docker start imagename
+		? Docker stop imagename
+		
+	
