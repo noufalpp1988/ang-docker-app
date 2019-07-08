@@ -1,6 +1,6 @@
-	• Create angular app
-	• Create Dockerfile in root  without extension
-	• Add below
+	â€¢ Create angular app
+	â€¢ Create Dockerfile in root  without extension
+	â€¢ Add below
 	FROM node:10.16.0-alpine as build-step
 	WORKDIR /app
 	COPY package.json ./
@@ -12,23 +12,27 @@
 	EXPOSE 80
 	CMD ["nginx","-g","daemon off;"]
 	
-	• Build docker fileCMD->
-		? 'Docker build -t ang-docker-app .'
-		? Once successful , check avilable docker images
-			§ 'Docker image ls'
-		? To remove docker image
-			§ 'Docker image rm imageID'
-	• Run docker image,
-		? 'Docker run  -it -p 9000:80 --name ang-docker-app imageName'
-		? Goto localhost://9000 -> to see the app running
-	• Check image details
-		? 'Docker ps -a'
-	• Go Inside docker image
-		? 'Docker exec -I -t ang-docker-app sh'
-		? Then give the path for html (Egs)
-			§ 'Cd /usr/share/nginx/html'
-	• Start/stop docker image
-		? Docker start imagename
-		? Docker stop imagename
+	â€¢ Build docker fileCMD->
+		â—‹ 'Docker build -t ang-docker-app .'
+		â—‹ Once successful , check avilable docker images
+			Â§ 'Docker image ls'
+		â—‹ To remove docker image
+			Â§ 'Docker image rm imageID'
+	â€¢ Run docker image,
+		â—‹ 'Docker run  --rm -d -p 9000:80 --name ang-docker-app imageName'
+		â—‹ Goto localhost://9000 -> to see the app running
+	â€¢ Check image details
+		â—‹ 'Docker ps -a'
+	â€¢ Go Inside docker image
+		â—‹ 'Docker exec -i -t ang-docker-app sh'
+		â—‹ Then give the path for html (Egs)
+			Â§ 'Cd /usr/share/nginx/html'
+	â€¢ Start/stop docker image
+		â—‹ Docker start imagename
+		â—‹ Docker stop imagename
+
+Simple method using docker extension from VSCODE
+
+https://www.youtube.com/watch?v=etA5xiX5TCA
 		
 	
