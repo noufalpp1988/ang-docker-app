@@ -11,6 +11,19 @@
 	COPY --from=build-step /app/dist/ang-docker-app /usr/share/nginx/html
 	EXPOSE 80
 	CMD ["nginx","-g","daemon off;"]
+  
+  
+  ----or---
+  
+  FROM node:latest as node
+  WORKDIR /app
+  COPY . .
+  RUN npm install
+  RUN npm run build --prod
+
+  FROM nginx:alpine
+  COPY --from=node /app/dist/ang-dock-app /usr/share/nginx/html
+
 	
 	• Build docker fileCMD->
 		○ 'Docker build -t ang-docker-app .'
